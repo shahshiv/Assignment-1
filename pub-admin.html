@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Publication Admin</title>
+    <h1>Publication Admin</h1>
+    <link rel="stylesheet" href="css.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/additional-methods.js"></script>
+  </head>
+  <body>
+
+    <form id="pubform">
+      <label>Type of Publication</label><br>
+      <select class="dropdown" name="publicationlist">
+        <option value="Journal">Journal</option>
+        <option value="Conference Paper">Conference Paper</option>
+        <option value="Workshop Paper">Workshop Paper</option>
+        <option value="Poster">Poster</option>
+        <option value="Technical Paper">Technical Paper</option>
+      </select><br><br>
+
+      <label>Year</label><br>
+      <input type="number" name="year" value="" placeholder="Year" value=""><br>
+
+      <label>Title</label><br>
+      <input type="text" name="title" value="" placeholder="Title" value=""><br>
+
+      <label>body</label><br>
+      <textarea name="body" rows="10" cols="50" placeholder="Enter body here."></textarea><br>
+
+      <label>Link</label><br>
+      <input type="url" name="link" value="" placeholder="url" value=""><br><br>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      $(document).ready(function () {
+        $('#bioform').validate({
+
+            rules: {
+              publicationlist: required,
+              year {
+                required: true,
+                minlength: 4,
+              },
+              title {
+                required: true,
+                minlength: 5,
+              },
+              body {
+                required: true,
+                minlength: 5,
+              },
+              link: required,
+            }
+
+            messages: {
+              publicationlist: 'Please select a type of publication.',
+              year {
+                required: 'Please enter a year.',
+                minlength: 'Please enter a vaid year.',
+              },
+              title {
+                required: 'Please enter a title.',
+                minlength: 'Please enter a valid title.',
+              },
+              body {
+                required: 'Please enter a body.',
+                minlength: 'Please enter a valid body.',
+              },
+              link: 'Please enter a valid url.',
+            }
+         });
+      });
+    </script>
+  </body>
+</html>
